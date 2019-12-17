@@ -2,10 +2,13 @@ package com.quantitymeasurement;
 
 import java.util.Objects;
 
-public class Feet {
+public class Length {
+
+    private Unit unit;
     private double value;
 
-    public Feet(double value) {
+    public Length(Unit unit, double value) {
+        this.unit = unit;
         this.value = value;
     }
 
@@ -13,8 +16,8 @@ public class Feet {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Feet feet = (Feet) o;
-        return Double.compare(feet.value, value) == 0;
+        Length length = (Length) o;
+        return Double.compare(length.value, value) == 0 &&
+                unit == length.unit;
     }
-
 }
