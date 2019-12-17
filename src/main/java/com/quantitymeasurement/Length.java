@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Length {
 
+    private static final double FEET_TO_INCH = 12.0;
+    private static final double INCH_TO_FEET = 0.083;
     private Unit unit;
     private double value;
 
@@ -19,5 +21,17 @@ public class Length {
         Length length = (Length) o;
         return Double.compare(length.value, value) == 0 &&
                 unit == length.unit;
+    }
+
+    public boolean compare(Length that) {
+        if (this.unit.equals(Unit.FEET) && (that.unit.equals(Unit.FEET)))
+            return Double.compare(this.value, that.value) == 0;
+        if (this.unit.equals(Unit.FEET) && (that.unit.equals(Unit.INCH)))
+            return Double.compare(this.value * FEET_TO_INCH, that.value) == 0;
+        if (this.unit.equals(Unit.INCH) && (that.unit.equals(Unit.FEET)))
+            return Double.compare(this.value* INCH_TO_FEET, that.value) == 0;
+        if (this.unit.equals(Unit.INCH) && (that.unit.equals(Unit.INCH)))
+            return Double.compare(this.value, that.value) == 0;
+        return false;
     }
 }
