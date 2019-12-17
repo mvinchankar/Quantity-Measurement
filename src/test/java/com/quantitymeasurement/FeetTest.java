@@ -18,4 +18,5 @@ public class FeetTest {
         Feet feet2 = new Feet(2.0);
         Assert.assertNotEquals(feet1,feet2);
     }
+
 }
