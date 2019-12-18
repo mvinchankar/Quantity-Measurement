@@ -49,8 +49,8 @@ public class LengthTest {
 
     @Test
     public void givenZeroInchAndZeroFeet_shouldReturnEqualLength() {
-        Length length1 = new Length(Unit.FEET, 1.0);
-        Length length2 = new Length(Unit.INCH, 12.0);
+        Length length1 = new Length(Unit.FEET, 0.0);
+        Length length2 = new Length(Unit.INCH, 0.0);
         boolean compareCheck = length1.compare(length2);
         Assert.assertTrue(compareCheck);
     }
@@ -88,7 +88,7 @@ public class LengthTest {
     }
 
     @Test
-    public void given1InchAnd1Feet_shouldReturnNotEquals() {
+    public void given1InchAnd12Feet_shouldReturnNotEquals() {
         Length length1 = new Length(Unit.INCH, 1.0);
         Length length2 = new Length(Unit.FEET, 12.0);
         boolean compareCheck = length1.compare(length2);
@@ -96,9 +96,9 @@ public class LengthTest {
     }
 
     @Test
-    public void given0InchAnd1Feet_shouldReturnNotEquals() {
-        Length length1 = new Length(Unit.INCH, 1.00);
-        Length length2 = new Length(Unit.FEET, 0.083);
+    public void given12InchAnd1Feet_shouldReturnTrue() {
+        Length length1 = new Length(Unit.INCH, 12.00);
+        Length length2 = new Length(Unit.FEET, 1.00);
         boolean compareCheck = length1.compare(length2);
         Assert.assertTrue(compareCheck);
     }
@@ -112,26 +112,70 @@ public class LengthTest {
     }
 
     @Test
-    public void givenOneYardIsEqualToOneYard_shouldReturnEquals()
-    {
+    public void givenOneYardIsEqualToOneYard_shouldReturnEquals() {
         Length length1 = new Length(Unit.YARD, 1.0);
         Length length2 = new Length(Unit.YARD, 1.0);
-        Assert.assertEquals(length1,length2);
+        Assert.assertEquals(length1, length2);
     }
 
     @Test
-    public void givenOneYardAndZeroYard_shouldReturnNotEquals()
-    {
+    public void givenOneYardAndZeroYard_shouldReturnNotEquals() {
         Length length1 = new Length(Unit.YARD, 1.0);
         Length length2 = new Length(Unit.YARD, 0.0);
-        Assert.assertNotEquals(length1,length2);
+        Assert.assertNotEquals(length1, length2);
     }
 
     @Test
-    public void givenOneYardAndOneFeet_shouldReturnNotEquals()
-    {
+    public void givenOneYardAndOneFeet_shouldReturnNotEquals() {
         Length length1 = new Length(Unit.YARD, 1.0);
         Length length2 = new Length(Unit.FEET, 1.0);
-        Assert.assertNotEquals(length1,length2);
+        Assert.assertNotEquals(length1, length2);
+    }
+
+    @Test
+    public void givenOneYardAndOneInch_shouldReturnNotEquals() {
+        Length length1 = new Length(Unit.YARD, 1.0);
+        Length length2 = new Length(Unit.INCH, 1.0);
+        Assert.assertNotEquals(length1, length2);
+    }
+
+    @Test
+    public void givenOneYardAndThreefeet_shouldReturnEquals() {
+        Length length1 = new Length(Unit.YARD, 1.0);
+        Length length2 = new Length(Unit.FEET, 3.0);
+        boolean compareCheck = length1.compare(length2);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenOneYardAndThirtySixInch_shouldReturnEquals() {
+        Length length1 = new Length(Unit.YARD, 1.0);
+        Length length2 = new Length(Unit.INCH, 36.0);
+        boolean compareCheck = length1.compare(length2);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenThirtySixInchAndOneYard_shouldReturnEquals() {
+        Length length1 = new Length(Unit.INCH, 36.0);
+        Length length2 = new Length(Unit.YARD, 1.0);
+        boolean compareCheck = length1.compare(length2);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenThreeFeetAndOneYard_shouldReturnEquals() {
+        Length length1 = new Length(Unit.FEET, 3.0);
+        Length length2 = new Length(Unit.YARD, 1.0);
+        boolean compareCheck = length1.compare(length2);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenOneYardAndOneYard_shouldReturnEquals() {
+        Length length1 = new Length(Unit.YARD, 1.0);
+        Length length2 = new Length(Unit.YARD, 1.0);
+        boolean compareCheck = length1.compare(length2);
+        Assert.assertTrue(compareCheck);
     }
 }

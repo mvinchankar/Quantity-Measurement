@@ -1,5 +1,5 @@
 package com.quantitymeasurement;
 
 public enum Unit {
-    FEET, INCH, NULL,YARD
+    FEET, INCH, NULL, YARD;
 }
