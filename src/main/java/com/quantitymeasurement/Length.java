@@ -23,4 +23,5 @@ public class Length {
     public boolean compare(Length l1, Length l2) {
         return Unit.compare(l1, l2);
     }
+
 }

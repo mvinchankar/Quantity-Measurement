@@ -2,10 +2,11 @@ package com.quantitymeasurement;
 
 public enum Unit {
 
-    FEET(12.0, TypeOfInput.LENGTH),
-    INCH(1.0, TypeOfInput.LENGTH),
-    YARD(36.0, TypeOfInput.LENGTH),
-    NULL(0.0,TypeOfInput.LENGTH);
+    FEET(12.00, TypeOfInput.LENGTH),
+    INCH(1.00, TypeOfInput.LENGTH),
+    YARD(36.00, TypeOfInput.LENGTH),
+    CENTIMETERS(0.393701, TypeOfInput.LENGTH),
+    NULL(0.0, TypeOfInput.LENGTH);
 
     private final double baseUnit;
     private final TypeOfInput type;
@@ -17,13 +18,16 @@ public enum Unit {
 
     public static boolean compare(Length l1, Length l2) {
         if (l1.unit.type.equals(l2.unit.type)) {
-            return Double.compare(l1.value * l1.unit.baseUnit,
-                    l2.value * l2.unit.baseUnit) == 0;
+            return Double.compare(Math.round(l1.value * l1.unit.baseUnit),
+                    Math.round(l2.value * l2.unit.baseUnit)) == 0;
         }
         return false;
     }
 
     public static double additionOfDifferentUnits(Length l1, Length l2) {
-        return (l1.value * l1.unit.baseUnit + l2.value * l2.unit.baseUnit);
+        if (l1.unit.type.equals(l2.unit.type)) {
+            return Math.round(l1.value * l1.unit.baseUnit + l2.value * l2.unit.baseUnit);
+        }
+        return 0.0;
     }
 }
