@@ -24,25 +24,9 @@ public class Length {
                 unit == length.unit;
     }
 
-    public boolean compare(Length that) {
-        if (this.unit.equals(Unit.FEET) && (that.unit.equals(Unit.FEET)))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.FEET) && (that.unit.equals(Unit.INCH)))
-            return Double.compare(this.value * FEET_TO_INCH, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && (that.unit.equals(Unit.FEET)))
-            return Double.compare(this.value, that.value * FEET_TO_INCH) == 0;
-        if (this.unit.equals(Unit.INCH) && (that.unit.equals(Unit.INCH)))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.YARD) && (that.unit.equals(Unit.FEET)))
-            return Double.compare(this.value * YARD_TO_FEET, that.value) == 0;
-        if (this.unit.equals(Unit.YARD) && (that.unit.equals(Unit.YARD)))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.FEET) && (that.unit.equals(Unit.YARD)))
-            return Double.compare(this.value, that.value *YARD_TO_FEET) == 0;
-        if (this.unit.equals(Unit.YARD) && (that.unit.equals(Unit.INCH)))
-            return Double.compare(this.value * YARD_TO_INCH, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && (that.unit.equals(Unit.YARD)))
-            return Double.compare(this.value, that.value * YARD_TO_INCH) == 0;
+    public boolean compare(Unit unit1, Unit unit2, Length that, Conversion conversion, Conversion conversion1) {
+        if (this.unit.equals(unit1) && (that.unit.equals(unit2)))
+            return Double.compare(conversion.convertTo(this.value), conversion1.convertTo(that.value)) == 0;
         return false;
     }
 }
