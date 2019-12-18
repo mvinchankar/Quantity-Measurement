@@ -116,4 +116,32 @@ public class UnitTest {
                 new Convertor(Unit.FEET, 1.00));
         Assert.assertFalse(compareCheck);
     }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneGallonAndThreePointSevenEightLitres_ShouldReturnCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.GALLON, 1.00),
+                new Convertor(Unit.LITRE, 3.78));
+        Assert.assertEquals(8.0, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneGallonAndTwoLitres_ShouldReturnInCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.GALLON, 1.00),
+                new Convertor(Unit.LITRE, 2.00));
+        Assert.assertNotEquals(4.00, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneLitreAndOneThousandMillilitres_ShouldReturnCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.LITRE, 1.00),
+                new Convertor(Unit.MILLILITRES, 1000));
+        Assert.assertEquals(2.00, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneLitreAndTwoThousandMillilitres_ShouldReturnInCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.LITRE, 1.00),
+                new Convertor(Unit.MILLILITRES, 2000.00));
+        Assert.assertNotEquals(2.00, result, 0.0);
+    }
 }
