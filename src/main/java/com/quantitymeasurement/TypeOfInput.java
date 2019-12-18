@@ -1,5 +1,5 @@
 package com.quantitymeasurement;
 
 public enum TypeOfInput {
-        LENGTH,VOLUME;
+        LENGTH,VOLUME,WEIGHT;
 }

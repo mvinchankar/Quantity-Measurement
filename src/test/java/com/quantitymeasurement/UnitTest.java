@@ -144,4 +144,39 @@ public class UnitTest {
                 new Convertor(Unit.MILLILITRES, 2000.00));
         Assert.assertNotEquals(2.00, result, 0.0);
     }
+
+    @Test
+    public void givenUnitsToAddUnitsOfDifferentTypes_WhenOneLitreAndTwoInches_ShouldReturnInCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.LITRE, 1.00),
+                new Convertor(Unit.INCH, 2.00));
+        Assert.assertNotEquals(2.00, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenOneKiloGramAndOneThousandGrams_ShouldReturnTrue() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.KILOGRAMS, 1.00),
+                new Convertor(Unit.GRAMS, 1000));
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenOneTonneAndOneThousandKiloGram_ShouldReturnTrue() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.TONNES, 1.00),
+                new Convertor(Unit.KILOGRAMS, 1000));
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenOneKiloGramAndOneTonne_ShouldReturnFalse() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.KILOGRAMS, 1.00),
+                new Convertor(Unit.TONNES, 1));
+        Assert.assertFalse(compareCheck);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenTwoKiloGramAndOneThousandTonne_ShouldReturnFalse() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.KILOGRAMS, 2.00),
+                new Convertor(Unit.TONNES, 1000));
+        Assert.assertFalse(compareCheck);
+    }
 }

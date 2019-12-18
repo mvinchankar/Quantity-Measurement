@@ -9,7 +9,10 @@ public enum Unit {
     NULL(0.0, TypeOfInput.LENGTH),
     GALLON(3.78,TypeOfInput.VOLUME),
     LITRE(1.00,TypeOfInput.VOLUME),
-    MILLILITRES(0.001,TypeOfInput.VOLUME);
+    MILLILITRES(0.001,TypeOfInput.VOLUME),
+    KILOGRAMS(1.00,TypeOfInput.WEIGHT),
+    GRAMS(0.001,TypeOfInput.WEIGHT),
+    TONNES(1000,TypeOfInput.WEIGHT);
 
     private final double baseUnit;
     private final TypeOfInput type;
