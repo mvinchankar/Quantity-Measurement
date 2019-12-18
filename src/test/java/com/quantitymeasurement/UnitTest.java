@@ -179,4 +179,46 @@ public class UnitTest {
                 new Convertor(Unit.TONNES, 1000));
         Assert.assertFalse(compareCheck);
     }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneTonnesAndOneThousandGrams_ShouldReturnCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.TONNES, 1.00),
+                new Convertor(Unit.GRAMS, 1000));
+        Assert.assertEquals(1001, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenTwoTonnesAndOneThousandGrams_ShouldReturnInCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.TONNES, 2.00),
+                new Convertor(Unit.GRAMS, 1000));
+        Assert.assertNotEquals(1001, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneKilogramsAndOneThousandGrams_ShouldReturnCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.KILOGRAMS, 1.00),
+                new Convertor(Unit.GRAMS, 1000));
+        Assert.assertEquals(2, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitsToAdd_WhenOneTonnesAndOneThousandKilograms_ShouldReturnCorrectValue() {
+        double result = Unit.additionOfDifferentUnits(new Convertor(Unit.TONNES, 1.00),
+                new Convertor(Unit.KILOGRAMS, 1000));
+        Assert.assertEquals(2000, result, 0.0);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenHundredCelsiusAndTwoHundredAndTwelveFahrenheit_ShouldReturnTrue() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.CELSIUS, 212),
+                new Convertor(Unit.FAHRENHEIT, 100));
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenUnitToConvertInto_WhenTwoHundredCelsiusAndTwoHundredAndTwelveFahrenheit_ShouldReturnFalse() {
+        boolean compareCheck = Unit.compare(new Convertor(Unit.CELSIUS, 212),
+                new Convertor(Unit.FAHRENHEIT, 200));
+        Assert.assertFalse(compareCheck);
+    }
 }

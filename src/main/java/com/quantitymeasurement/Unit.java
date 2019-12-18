@@ -7,12 +7,14 @@ public enum Unit {
     YARD(36.00, TypeOfInput.LENGTH),
     CENTIMETERS(0.393701, TypeOfInput.LENGTH),
     NULL(0.0, TypeOfInput.LENGTH),
-    GALLON(3.78,TypeOfInput.VOLUME),
-    LITRE(1.00,TypeOfInput.VOLUME),
-    MILLILITRES(0.001,TypeOfInput.VOLUME),
-    KILOGRAMS(1.00,TypeOfInput.WEIGHT),
-    GRAMS(0.001,TypeOfInput.WEIGHT),
-    TONNES(1000,TypeOfInput.WEIGHT);
+    GALLON(3.78, TypeOfInput.VOLUME),
+    LITRE(1.00, TypeOfInput.VOLUME),
+    MILLILITRES(0.001, TypeOfInput.VOLUME),
+    KILOGRAMS(1.00, TypeOfInput.WEIGHT),
+    GRAMS(0.001, TypeOfInput.WEIGHT),
+    TONNES(1000, TypeOfInput.WEIGHT),
+    CELSIUS(100, TypeOfInput.TEMPETATURE),
+    FAHRENHEIT(212, TypeOfInput.TEMPETATURE);
 
     private final double baseUnit;
     private final TypeOfInput type;
